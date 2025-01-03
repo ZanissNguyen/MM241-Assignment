@@ -63,13 +63,23 @@ def grade_one_group(group_folder, force=False):
 
         results = []
         
+        # try:
+        #     policy = policy_class(policy_id=pid)
+        #     policy_has_bug = False
+        # except Exception as e:
+        #     print(f"Error: {e}")
+        #     policy_has_bug = True
+        
         for i, config in enumerate(CONFIGS):
+
+            ####################################################################
             try:
                 policy = policy_class(policy_id=pid)
                 policy_has_bug = False
             except Exception as e:
                 print(f"Error: {e}")
                 policy_has_bug = True
+            ####################################################################
 
             if policy_has_bug:
                 results.append({"filled_ratio": 1.0, "trim_loss": 1.0})
